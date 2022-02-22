@@ -1,0 +1,22 @@
+@host=localhost
+@port=4004
+
+###
+POST http://{{host}}:{{port}}/auth-transport/Suffix
+Content-Type: application/json
+
+{
+  "destination":"AuthorizationAPI_Source", 
+  "suffix": "!t113913"
+}
+
+
+
+###
+POST http://{{host}}:{{port}}/auth-transport/Suffix
+Content-Type: application/json
+
+{
+  "destination":"AuthorizationAPI_Target", 
+  "suffix": "!t64770"
+}
