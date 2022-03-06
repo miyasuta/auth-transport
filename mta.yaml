@@ -29,6 +29,8 @@ modules:
    requires:
     # Resources extracted from CAP configuration
     - name: auth-transport-db
+    - name: auth-transport-dest
+    - name: auth-transport-uaa
    provides:
     - name: srv-api      # required by consumers of CAP services (e.g. approuter)
       properties:
@@ -59,4 +61,16 @@ resources:
    properties:
      hdi-service-name: ${service-name}
 
+ - name: auth-transport-dest
+   type: org.cloudfoundry.managed-service
+   parameters:
+     service: destination
+     service-plan: lite
+
+ - name: auth-transport-uaa
+   type: org.cloudfoundry.managed-service
+   parameters:
+     path: ./xs-security.json
+     service: xsuaa
+     service-plan: application
 

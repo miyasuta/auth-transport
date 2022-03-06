@@ -1,0 +1,7 @@
+{
+    "xsappname": "auth-transport",
+    "tenant-mode": "dedicated",
+    "scopes": [],
+    "attributes": [],
+    "role-templates": []
+  }

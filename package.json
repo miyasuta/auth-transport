@@ -6,7 +6,9 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
+        "@sap-cloud-sdk/http-client": "^2.1.0",
         "@sap/cds": "^5",
+        "@sap/xsenv": "^3.2.0",
         "express": "^4",
         "hdb": "^0.18.3"
     },

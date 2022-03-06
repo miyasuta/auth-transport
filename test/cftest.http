@@ -1,11 +1,8 @@
-@host=localhost
-@port=4004
+@host=9e9ab65etrial-dev-auth-transport-srv.cfapps.eu10.hana.ondemand.com
+
 
 ###
-GET http://{{host}}:{{port}}/auth-transport/Suffix
-
-###
-POST http://{{host}}:{{port}}/auth-transport/Suffix
+POST https://{{host}}/auth-transport/Suffix
 Content-Type: application/json
 
 {
@@ -13,9 +10,8 @@ Content-Type: application/json
   "suffix": "!t113913"
 }
 
-
 ###
-POST http://{{host}}:{{port}}/auth-transport/Suffix
+POST https://{{host}}:{{port}}/auth-transport/Suffix
 Content-Type: application/json
 
 {
@@ -24,7 +20,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://{{host}}:{{port}}/auth-transport/transportRoleCollections
+POST https://{{host}}/auth-transport/transportRoleCollections
 Content-Type: application/json
 
 {
@@ -32,5 +28,5 @@ Content-Type: application/json
         "source": "AuthorizationAPI_Source",
         "target": "AuthorizationAPI_Target"
     },
-    "roleCollections": ["myxsuaa_Admin"]
+    "roleCollections": ["myxsuaa_Admin", "myxsuaa_Viewer"]
 }
