@@ -8,7 +8,7 @@ version: 1.0.0
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
-   
+
 build-parameters:
   before-all:
    - builder: custom
@@ -47,6 +47,48 @@ modules:
     # 'hana' and 'xsuaa' resources extracted from CAP configuration
     - name: auth-transport-db
 
+ - name: auth-transport-approuter
+   path: approuter
+   type: approuter.nodejs
+   parameters:
+     disk-quota: 256M
+     memory: 256M
+   requires: 
+     - name: auth-transport-repo-runtime
+     - name: auth-transport-dest
+     - name: auth-transport-uaa
+     - name: srv-api
+       group: destinations
+       properties:
+         name: srv-api
+         url: "~{srv-url}"
+         forwardAuthToken: true     
+
+ - name: auth-transport-app-content
+   type: com.sap.application.content
+   path: app/miyasuta.transportui
+   requires:
+   - name: auth-transport-repo-host
+     parameters:
+       content-target: true
+   build-parameters:
+     build-result: resources
+     requires:
+     - artifacts:
+       - transportui.zip
+       name: transportui
+       target-path: resources/
+
+ - name: transportui
+   type: html5
+   path: app/miyasuta.transportui
+   build-parameters:
+     build-result: dist
+     builder: custom
+     commands:
+     - npm install
+     - npm run build:cf
+     supported-platforms: []
 
 resources:
  # services extracted from CAP configuration
@@ -66,11 +108,36 @@ resources:
    parameters:
      service: destination
      service-plan: lite
+     config:
+       HTML5Runtime_enabled: true
+       init_data:
+         instance:
+           destinations:
+           - Authentication: NoAuthentication
+             Name: ui5
+             ProxyType: Internet
+             Type: HTTP
+             URL: https://ui5.sap.com
+           existing_destinations_policy: update
+       version: 1.0.0       
 
  - name: auth-transport-uaa
    type: org.cloudfoundry.managed-service
    parameters:
      path: ./xs-security.json
      service: xsuaa
-     service-plan: application
+     service-plan: application   
+
+ - name: auth-transport-repo-host
+   type: org.cloudfoundry.managed-service
+   parameters:
+     service: html5-apps-repo
+     service-name: ui5-deploy-html5-srv
+     service-plan: app-host     
+
+ - name: auth-transport-repo-runtime
+   parameters:
+     service-plan: app-runtime
+     service: html5-apps-repo
+   type: org.cloudfoundry.managed-service    
 
