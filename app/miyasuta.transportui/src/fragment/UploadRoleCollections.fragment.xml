@@ -1,0 +1,18 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+
+	<l:VerticalLayout
+		class="sapUiContentPadding" width="100%">
+			<MessageStrip
+			showIcon="true"
+			text="{i18n>uploadInstruction}"/>
+            <TextArea id="roleCollectionsInput" 
+                width="100%" rows="4" growing="true" growingMaxLines="7" 
+				value="{viewModel>/roleCollectionsInput}"
+                change=".onRoleCollectionsInput"/>
+    </l:VerticalLayout>
+
+</c:FragmentDefinition>

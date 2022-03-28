@@ -14,3 +14,9 @@ service AuthTransportService {
     entity Suffix as projection on db.Suffix;
     action transportRoleCollections (destinations: destinations, roleCollections: array of String) returns array of result;
 }
+
+// annotate AuthTransportService.transportRoleCollections
+//     with {
+//         destination @mandatory;
+//         Suffix @mandatory;
+//     };

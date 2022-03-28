@@ -6,11 +6,14 @@ import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import ResourceBundle from "sap/base/i18n/ResourceBundle";
 import Router from "sap/ui/core/routing/Router";
 import History from "sap/ui/core/routing/History";
+import Control from "sap/ui/core/Control";
+import Fragment from "sap/ui/core/Fragment";
 
 /**
  * @namespace miyasuta.transportui.controller
  */
 export default abstract class BaseController extends Controller {
+	private _fragments = {};
 
 	/**
 	 * Convenience method for accessing the component of the controller's view.
@@ -81,5 +84,20 @@ export default abstract class BaseController extends Controller {
 			this.getRouter().navTo("main", {}, undefined, true);
 		}
 	}
+
+
+	public async loadFragment(fragmentName: string) : Promise<Control> {
+		let fragment = this._fragments[fragmentName] as Control;
+		if(!fragment) {
+			fragment = await Fragment.load({
+				id: this.getView().getId(),
+				name: "miyasuta.transportui.fragment." + fragmentName,
+				controller: this
+			}) as Control;
+			this.getView().addDependent(fragment);
+			this._fragments[fragmentName] = fragment;
+		}		
+		return fragment;
+	}	
 
 }

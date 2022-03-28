@@ -1,0 +1,19 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+
+        <Wizard id="transportWizard" finishButtonText="{i18n>transport}" complete=".onComplete">
+            <WizardStep id="step1" title="{i18n>selectDestinations}" 
+                validated="false" activate=".onValidateDestinations">
+                <c:Fragment fragmentName="miyasuta.transportui.fragment.SelectDestinations" type="XML" />
+            </WizardStep>
+            <WizardStep id="step2" title="{i18n>inputRoleCollections}">
+                <c:Fragment fragmentName="miyasuta.transportui.fragment.UploadRoleCollections" type="XML" />
+            </WizardStep>    
+            <WizardStep id="step3" title="{i18n>confirm}">
+                <c:Fragment fragmentName="miyasuta.transportui.fragment.Confirm" type="XML" />
+            </WizardStep>                     
+        </Wizard>
+
+</c:FragmentDefinition>

@@ -9,7 +9,17 @@
 		"description": "{{app_description}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		}
+		},
+        "dataSources": {
+            "mainService": {
+                "uri": "/auth-transport/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
 	},
 
 	"sap.ui": {
@@ -55,7 +65,22 @@
 				"settings": {
 					"bundleName": "miyasuta.transportui.i18n.i18n"
 				}
-			}
+			},
+            "": {
+                "type": "sap.ui.model.odata.v4.ODataModel",
+                "settings": {
+                  "synchronizationMode": "None",
+                  "operationMode": "Server",
+                  "autoExpandSelect": true,
+                  "earlyRequests": true,
+                  "groupProperties": {
+                    "default": {
+                      "submit": "Auto"
+                    }
+                  }
+                },
+                "dataSource": "mainService"
+            }
 		},
 
 		"routing": {
@@ -70,14 +95,32 @@
 			"routes": [
 				{
 					"pattern": "",
-					"name": "main",
-					"target": "main"
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "destinations",
+					"name": "destinations",
+					"target": "destinations"
+				},				
+				{
+					"pattern": "rolecollections",
+					"name": "rolecollections",
+					"target": "rolecollections"
 				}
 			],
 			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
+				"home": {
+					"viewId": "home",
+					"viewName": "Home"
+				},
+				"destinations": {
+					"viewId": "destinations",
+					"viewName": "Destinations"
+				},
+				"rolecollections": {
+					"viewId": "rolecollections",
+					"viewName": "RoleCollections"
 				}
 			}
 		}

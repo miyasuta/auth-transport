@@ -1,0 +1,37 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+>
+
+	<l:VerticalLayout id="selectDestinations"
+		class="sapUiContentPadding"
+		width="100%">
+		<f:SimpleForm id="destinationForm" 
+            editable="true"
+            singleContainerFullSize="false"
+            >
+            <Label text="{i18n>source}"/>
+            <Select
+                id="source"
+                items="{/Suffix}"
+                selectedKey="{viewModel>/destinations/source}"
+                forceSelection="false"
+                change=".onValidateDestinations">
+                <c:Item key="{destination}" text="{destination}"/>
+            </Select>
+            <Label text="{i18n>target}"/>
+             <Select
+                id="target"
+                items="{/Suffix}"
+                selectedKey="{viewModel>/destinations/target}"
+                forceSelection="false"
+                change=".onValidateDestinations">
+                <c:Item key="{destination}" text="{destination}"/>
+            </Select>           
+        </f:SimpleForm>
+    </l:VerticalLayout>
+
+
+</c:FragmentDefinition>

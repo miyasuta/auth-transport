@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-typescript": "^7.16.0",
     "@sap/ui5-builder-webide-extension": "^1.1.7",
+    "@sap/ux-ui5-tooling": "^1.5.1",
     "@sapui5/ts-types-esm": "1.99.0",
     "@types/jquery": "3.5.1",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
@@ -40,7 +41,8 @@
     "dependencies": [
       "ui5-middleware-livereload",
       "@sap/ui5-builder-webide-extension",
-      "ui5-task-zipper"
+      "ui5-task-zipper",
+      "@sap/ux-ui5-tooling"
     ]
   }
 }

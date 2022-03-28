@@ -1,0 +1,19 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+	<l:VerticalLayout
+		class="sapUiContentPadding" width="100%"
+	>
+		<MessageStrip
+			showIcon="true"
+			text="{i18n>confirmBeforeTransport}"
+		/>
+		<List items="{
+			path: 'viewModel>/roleCollections'
+		}" inset="true">
+			<StandardListItem title="{viewModel>name}"/>
+		</List>
+	</l:VerticalLayout>
+</c:FragmentDefinition>

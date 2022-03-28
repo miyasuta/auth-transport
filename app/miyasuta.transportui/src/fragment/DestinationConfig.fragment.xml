@@ -1,0 +1,37 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog title="{i18n>createDestination}">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm >
+                <Label text="{i18n>destinationName}" required="true"/>
+                <Input value="{
+                    path: 'viewModel>/destinationName',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }}"  
+                    change="onInputChange" id="inputDestination"/>
+                <Label text="{i18n>suffix}" required="true"/>
+                <Input value="{
+                    path: 'viewModel>/suffix',
+                    type: 'sap.ui.model.type.String',
+                    constraints: {
+                        minLength: 1
+                    }}"  
+                    change="onInputChange" id="inputSuffix"/>
+            </f:SimpleForm>
+        </VBox>
+
+        <beginButton>
+            <Button type="Emphasized" text="{i18n>ok}" press="onCreateDestination"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>cancel}" press="onCancel"/>
+        </endButton>
+    </Dialog>
+    
+</c:FragmentDefinition>

@@ -1,0 +1,40 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+>
+
+	<l:VerticalLayout
+        id="transportLayout"
+		class="sapUiContentPadding "
+		width="100%"
+	>    
+		<Table
+            items="{viewModel>/roleCollections}" inset="true">
+            <columns>
+                <Column>
+                    <Text text="{i18n>transport.column.roleCollection}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>transport.column.status}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>transport.column.message}"/>
+                </Column>                                
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{viewModel>name}"/>
+                        <ObjectStatus text="{viewModel>status}" state="{
+                            path: 'viewModel>status',
+                            formatter: '.formatStatus'
+                        }"/>
+                        <Text text="{viewModel>message}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+	</l:VerticalLayout>
+
+</c:FragmentDefinition>

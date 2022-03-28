@@ -2,8 +2,51 @@
 	controllerName="miyasuta.transportui.controller.App"
 	displayBlock="true"
 	xmlns="sap.m"
+	xmlns:tnt="sap.tnt"
 	xmlns:mvc="sap.ui.core.mvc">
 
-	<App id="app" />
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" 
+				icon="sap-icon://menu2" 
+				type="Transparent" 
+				press=".onSideNavButtonPress" />
+				<ToolbarSpacer />
+				<FormattedText htmlText='&lt;h4&gt;{i18n>app_title}&lt;/h4&gt;' />
+				<ToolbarSpacer />			
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation
+				expanded="true"
+				itemSelect=".onItemSelect">	
+				<tnt:NavigationList>
+					<tnt:NavigationListItem
+						text="{i18n>home}"
+						icon="sap-icon://home"
+						key="home"/>				
+					<tnt:NavigationListItem
+						text="{i18n>settings}"
+						icon="sap-icon://action-settings">
+						<tnt:NavigationListItem
+							text="{i18n>maintainDest}"
+							key="destinations"/>						
+					</tnt:NavigationListItem>				
+					<tnt:NavigationListItem
+						text="{i18n>transport}"
+						icon="sap-icon://shipping-status"
+						key="transport">
+						<tnt:NavigationListItem
+							text="{i18n>roleCollections}"
+							key="rolecollections"/>						
+					</tnt:NavigationListItem>							
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<App id="app" />
+		</tnt:mainContents>
+	</tnt:ToolPage>
 
 </mvc:View>

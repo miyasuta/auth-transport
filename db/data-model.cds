@@ -1,6 +1,6 @@
 namespace auth.transport;
 
 entity Suffix {
-    key destination: String;
-    suffix: String;
+    key destination: String @mandatory;
+    suffix: String @mandatory;
 }

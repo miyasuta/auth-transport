@@ -1,0 +1,35 @@
+<mvc:View
+	controllerName="miyasuta.transportui.controller.Destinations"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page title="{i18n>maintainDest}">
+		<Table id="destinationConfig" inset="true" items="{path: '/Suffix'}" mode="Delete" delete="onDeleteDestination">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://add" tooltip="{i18n>addTooltip}" press="onAddDestination" />
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Text text="{i18n>destinationName}"/>
+				</Column>
+				<Column>
+					<Text text="{i18n>suffix}"/>
+				</Column>   				                          
+			</columns>		
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{destination}"/>
+						<Text text="{suffix}"/>
+					</cells>
+				</ColumnListItem>			
+			</items>
+		</Table>	
+	</Page>
+</mvc:View>
