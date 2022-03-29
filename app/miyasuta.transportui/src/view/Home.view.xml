@@ -11,9 +11,9 @@
 			<l:VerticalLayout class="sapUiContentPadding">
 				<Text text="Please see the blog post below for instructions on how to use."/>
 				<Link
-					text="A tool for transporting role collections between BTP subaccounts"
+					text="Transporting role collections between BTP subaccounts Part1 : Custom tool"
 					target="_blank"
-					href="http://www.sap.com" />
+					href="https://blogs.sap.com/2022/03/29/transporting-role-collections-between-btp-subaccounts-part1-custom-tool/" />
 			</l:VerticalLayout>			
 		</content>
 	</Page>
